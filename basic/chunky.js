@@ -4,13 +4,22 @@
 
 function chunkArrayInGroups(arr, size) {
   let newArr = [];
-	let chunk = arr.slice(0,2);
 	let counter = 0;
-	
-  return arr;
+	let cut = 0;
+	let size2 = size;
+
+	while(counter <= size*2) {
+		let chunk = arr.slice(cut,size2);
+		newArr.push(chunk);
+		cut += size;
+		size2 += size;
+		counter += 1
+	}
+	let chunkies = newArr.filter( a => a != '');
+  return chunkies;
 }
 
-console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2));
+chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 2);
 
 
 // chunkArrayInGroups(["a", "b", "c", "d"], 2) should return [["a", "b"], ["c", "d"]].
